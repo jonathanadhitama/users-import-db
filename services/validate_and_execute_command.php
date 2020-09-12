@@ -59,7 +59,8 @@ function validate_and_execute($argv)
             --create_table – This will cause the PostgreSQL users table to be built and no further action will be taken.
                              If the table already exists, it will drop the existing table first before creating a new table.
                              To be used with the -u, -p, -h directives.
-            --dry_run – This will be used with the --file directive in case we want to run the script but not insert into the DB.     
+            --dry_run – This will be used with the --file directive in case we want to run the script but not insert into the DB. 
+                        The -u, -p, and -h directives are not required.
             --help – which will output the above list of directives with details.
         ";
     } else {

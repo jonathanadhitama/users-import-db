@@ -29,9 +29,13 @@ function insert_or_update_users($csv_file, $insert_to_db) {
     }
     foreach ($users as $user) {
         //Formatting user data
-        $email = array_key_exists("email", $user) ? remove_whitespace_characters(strtolower($user["email"])) : "";
-        $name = array_key_exists("name", $user) ? remove_whitespace_characters(ucfirst(strtolower($user["name"]))) : "";
-        $surname = array_key_exists("surname", $user) ? remove_whitespace_characters(ucfirst(strtolower($user["surname"]))) : "";
+        $keys = array_keys($user);
+        if (count($keys) < 3) {
+            return "Invalid CSV format. Please provide a valid CSV format with headers: name, surname, email.";
+        }
+        $name = remove_whitespace_characters(ucfirst(strtolower($user[$keys[0]])));
+        $surname = remove_whitespace_characters(ucfirst(strtolower($user[$keys[1]])));
+        $email = remove_whitespace_characters(strtolower($user[$keys[2]]));
 
         //Validating user email
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
