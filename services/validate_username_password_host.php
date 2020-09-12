@@ -13,7 +13,7 @@ function validate_username_password_host($argv) {
     }
     if (!in_array("-p", $argv)) {
         $valid = false;
-        $error_message .= "Please provide the -h command option to specify the database username to insert user into DB\n";
+        $error_message .= "Please provide the -p command option to specify the database username to insert user into DB\n";
     }
     return ["valid" => $valid, "message" => substr($error_message, 0, -1)];
 }

@@ -1,0 +1,10 @@
+<phpunit>
+    <testsuites>
+        <testsuite name="GetArgumentValueTest">
+            <file>tests/GetArgumentValueTest.php</file>
+        </testsuite>
+        <testsuite name="ValidateUsernamePasswordHostTest">
+            <file>tests/ValidateUsernamePasswordHostTest.php</file>
+        </testsuite>
+    </testsuites>
+</phpunit>
