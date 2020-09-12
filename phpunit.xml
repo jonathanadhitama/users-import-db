@@ -6,5 +6,8 @@
         <testsuite name="ValidateUsernamePasswordHostTest">
             <file>tests/ValidateUsernamePasswordHostTest.php</file>
         </testsuite>
+        <testsuite name="InputOrUpdateUsersTest">
+            <file>tests/InputOrUpdateUsersTest.php</file>
+        </testsuite>
     </testsuites>
 </phpunit>

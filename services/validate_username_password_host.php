@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Function that validates whether the username, password, and host service directives are provided
+ * @param array $argv
+ * @return array
+ */
 function validate_username_password_host($argv) {
     $valid = true;
     $error_message = "";
