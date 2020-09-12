@@ -1,4 +1,7 @@
 <?php
+require_once "validate_username_password_host.php";
+require_once "create_user_table.php";
+require_once "get_argument_value.php";
 require "vendor/autoload.php";
 use Illuminate\Database\Capsule\Manager as Capsule;
 
@@ -24,7 +27,12 @@ function db_connect($host, $username, $password)
 function validate_and_execute($argv)
 {
     if (in_array("--create_table", $argv)) {
-        return "Creating User Table";
+        $validation = validate_username_password_host($argv);
+        if (!$validation["valid"]) {
+            return $validation["message"];
+        }
+        db_connect(get_argument_value("-h", $argv), get_argument_value("-u", $argv), get_argument_value("-p", $argv));
+        create_user_table();
     } elseif (in_array("--help", $argv)) {
         return "
             --file [csv file name] – this is the name of the CSV to be parsed
