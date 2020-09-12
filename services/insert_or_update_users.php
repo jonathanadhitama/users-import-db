@@ -1,6 +1,7 @@
 <?php
 require_once "models/User.php";
 require_once "remove_whitespace_characters.php";
+require_once "handle_sanitise_name.php";
 require_once "sanitise_array_keys.php";
 use Box\Spout\Common\Exception\IOException;
 use Box\Spout\Common\Exception\UnsupportedTypeException;
@@ -33,8 +34,8 @@ function insert_or_update_users($csv_file, $insert_to_db) {
         if (count($keys) < 3) {
             return "Invalid CSV format. Please provide a valid CSV format with headers: name, surname, email.";
         }
-        $name = remove_whitespace_characters(ucfirst(strtolower($user[$keys[0]])));
-        $surname = remove_whitespace_characters(ucfirst(strtolower($user[$keys[1]])));
+        $name = handle_sanitise_name($user[$keys[0]], false);
+        $surname = handle_sanitise_name($user[$keys[1]], true);
         $email = remove_whitespace_characters(strtolower($user[$keys[2]]));
 
         //Validating user email

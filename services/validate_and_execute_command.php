@@ -37,8 +37,7 @@ function db_connect($host, $username, $password)
  * @param array $argv argv array
  * @return string
  */
-function validate_and_execute($argv)
-{
+function validate_and_execute($argv) {
     if (in_array("--create_table", $argv)) {
         $validation = validate_username_password_host($argv);
         if (!$validation["valid"]) {

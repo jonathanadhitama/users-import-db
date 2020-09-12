@@ -9,5 +9,11 @@
         <testsuite name="InputOrUpdateUsersTest">
             <file>tests/InputOrUpdateUsersTest.php</file>
         </testsuite>
+        <testsuite name="HandleCapitaliseSurnameTest">
+            <file>tests/HandleCapitaliseSurnameTest.php</file>
+        </testsuite>
+        <testsuite name="HandleSanitiseNameTest">
+            <file>tests/HandleSanitiseNameTest.php</file>
+        </testsuite>
     </testsuites>
 </phpunit>
