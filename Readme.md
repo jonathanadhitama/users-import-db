@@ -23,7 +23,7 @@
 - --file: Provides the CSV file path to be processed.
     - Requires -u, -p -h command directive.
 
-#Assumptions:
+# Assumptions:
 - If "users" table already exists inside the database, --create_table directive will drop the existing table before creating a new "users" table.
 - If there is a --dry_run command directive, command directives -u, -p, and -h is not required.
 - If an email address already exists inside the table, then the script will update the name and the surname of the user.
