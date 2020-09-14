@@ -22,17 +22,17 @@ function insert_or_update_users($csv_file, $insert_to_db) {
     try {
         $users = sanitise_array_keys((new FastExcel())->import($csv_file)->toArray());
     } catch (IOException $e) {
-        return "Import CSV IOException triggered: " . $e->getMessage();
+        return "Import CSV IOException triggered: " . $e->getMessage() . "\n";
     } catch (UnsupportedTypeException $e) {
-        return "Import CSV UnsupportedTypeException triggered: " . $e->getMessage();
+        return "Import CSV UnsupportedTypeException triggered: " . $e->getMessage() . "\n";
     } catch (ReaderNotOpenedException $e) {
-        return "Import CSV ReaderNotOpenedException triggered: " . $e->getMessage();
+        return "Import CSV ReaderNotOpenedException triggered: " . $e->getMessage() . "\n";
     }
     foreach ($users as $user) {
         //Formatting user data
         $keys = array_keys($user);
         if (count($keys) < 3) {
-            return "Invalid CSV format. Please provide a valid CSV format with headers: name, surname, email.";
+            return "Invalid CSV format. Please provide a valid CSV format with headers: name, surname, email.\n";
         }
         $name = handle_sanitise_name($user[$keys[0]], false);
         $surname = handle_sanitise_name($user[$keys[1]], true);
@@ -47,13 +47,17 @@ function insert_or_update_users($csv_file, $insert_to_db) {
         }
 
         if ($insert_to_db) {
-            User::updateOrCreate(
-                ['email' => strtolower($user['email'])],
-                ['name' => $name, 'surname' => $surname]
-            );
+            try {
+                User::updateOrCreate(
+                    ['email' => strtolower($user['email'])],
+                    ['name' => $name, 'surname' => $surname]
+                );
+            } catch (PDOException $exception) {
+                return "Fail to insert / update user " . $exception->getMessage() . "\n";
+            }
         }
         $insert_count++;
     }
-    $output .= "Processed $insert_count entries. $not_insert_count user(s) not processed due to invalid email address.";
+    $output .= "Processed $insert_count entries. $not_insert_count user(s) not processed due to invalid email address.\n";
     return $output;
 }

@@ -28,7 +28,7 @@ class ValidateUsernamePasswordHostTest extends TestCase
     public function test_invalid_argv_host() {
         $validation = validate_username_password_host($this->invalid_argv_host);
         $this->assertEquals(false, $validation["valid"]);
-        $this->assertEquals("Please provide the -h command option to specify the database username to insert user into DB", $validation["message"]);
+        $this->assertEquals("Please provide the -h command option to specify the database username to insert user into DB\n", $validation["message"]);
     }
 
     /**
@@ -39,7 +39,7 @@ class ValidateUsernamePasswordHostTest extends TestCase
         $validation = validate_username_password_host($this->invalid_argv_username);
         $this->assertEquals(false, $validation["valid"]);
         $this->assertEquals(
-            "Please provide the -u command option to specify the database username to insert user into DB",
+            "Please provide the -u command option to specify the database username to insert user into DB\n",
             $validation["message"]
         );
     }
@@ -52,7 +52,7 @@ class ValidateUsernamePasswordHostTest extends TestCase
         $validation = validate_username_password_host($this->invalid_argv_password);
         $this->assertEquals(false, $validation["valid"]);
         $this->assertEquals(
-            "Please provide the -p command option to specify the database username to insert user into DB",
+            "Please provide the -p command option to specify the database username to insert user into DB\n",
             $validation["message"]
         );
     }
@@ -64,7 +64,7 @@ class ValidateUsernamePasswordHostTest extends TestCase
     public function test_invalid_argv_all() {
         $validation = validate_username_password_host($this->invalid_argv_all);
         $this->assertEquals(false, $validation["valid"]);
-        $this->assertEquals("Please provide the -u command option to specify the database username to insert user into DB\nPlease provide the -h command option to specify the database username to insert user into DB\nPlease provide the -p command option to specify the database username to insert user into DB",
+        $this->assertEquals("Please provide the -u command option to specify the database username to insert user into DB\nPlease provide the -h command option to specify the database username to insert user into DB\nPlease provide the -p command option to specify the database username to insert user into DB\n",
             $validation["message"]
         );
     }

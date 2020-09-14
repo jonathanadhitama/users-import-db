@@ -7,13 +7,13 @@ require "vendor/autoload.php";
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 /**
- * Function that connects to the PostgreSQL Database
+ * Function that setups the PostgreSQL Database
  * @param string $host database host
  * @param string $username database username
  * @param string $password database password
  * @return void
  */
-function db_connect($host, $username, $password)
+function db_setup($host, $username, $password)
 {
     $capsule = new Capsule;
     $capsule->addConnection([
@@ -24,7 +24,6 @@ function db_connect($host, $username, $password)
         "username" => $username,
         "password" => $password
     ]);
-
     //Make this Capsule instance available globally.
     $capsule->setAsGlobal();
 
@@ -43,8 +42,8 @@ function validate_and_execute($argv) {
         if (!$validation["valid"]) {
             return $validation["message"];
         }
-        db_connect(get_argument_value("-h", $argv), get_argument_value("-u", $argv), get_argument_value("-p", $argv));
-        create_user_table();
+        db_setup(get_argument_value("-h", $argv), get_argument_value("-u", $argv), get_argument_value("-p", $argv));
+        return create_user_table();
     } elseif (in_array("--help", $argv)) {
         return "
         NAME
@@ -75,7 +74,7 @@ function validate_and_execute($argv) {
             return $validation["message"];
         }
         if ($insert_to_db && $validation["valid"]) {
-            db_connect(get_argument_value("-h", $argv), get_argument_value("-u", $argv), get_argument_value("-p", $argv));
+            db_setup(get_argument_value("-h", $argv), get_argument_value("-u", $argv), get_argument_value("-p", $argv));
         }
         return insert_or_update_users(get_argument_value("--file", $argv), $insert_to_db);
     }

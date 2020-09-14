@@ -15,7 +15,7 @@ class InputOrUpdateUsersTest extends TestCase
      */
     public function test_argument_value_file() {
         $this->assertEquals(
-            "Processed 2 entries. 0 user(s) not processed due to invalid email address.",
+            "Processed 2 entries. 0 user(s) not processed due to invalid email address.\n",
             insert_or_update_users($this->all_valid_file_path, false)
         );
     }
@@ -26,7 +26,7 @@ class InputOrUpdateUsersTest extends TestCase
      */
     public function test_invalid_user_data() {
         $this->assertEquals(
-            "User Edward Jikes was not inserted because invalid email address: edward@jikes@com.au\nProcessed 1 entries. 1 user(s) not processed due to invalid email address.",
+            "User Edward Jikes was not inserted because invalid email address: edward@jikes@com.au\nProcessed 1 entries. 1 user(s) not processed due to invalid email address.\n",
             insert_or_update_users($this->invalid_email_file_path, false)
         );
     }
@@ -37,7 +37,7 @@ class InputOrUpdateUsersTest extends TestCase
      */
     public function test_invalid_file_path() {
         $this->assertEquals(
-            "Import CSV IOException triggered: Could not open tests/users.csv for reading! File does not exist.",
+            "Import CSV IOException triggered: Could not open tests/users.csv for reading! File does not exist.\n",
             insert_or_update_users($this->invalid_file_path, false)
         );
     }
@@ -48,7 +48,7 @@ class InputOrUpdateUsersTest extends TestCase
      */
     public function test_invalid_csv_format() {
         $this->assertEquals(
-            "Invalid CSV format. Please provide a valid CSV format with headers: name, surname, email.",
+            "Invalid CSV format. Please provide a valid CSV format with headers: name, surname, email.\n",
             insert_or_update_users($this->invalid_csv_format_path, false)
         );
     }

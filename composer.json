@@ -1,7 +1,8 @@
 {
     "require": {
         "illuminate/database": "^8.1",
-        "rap2hpoutre/fast-excel": "^2.1"
+        "rap2hpoutre/fast-excel": "^2.1",
+      "ext-pdo": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^7"
