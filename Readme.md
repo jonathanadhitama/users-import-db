@@ -4,7 +4,8 @@
 - phpunit/phpunit: PHPUnit for unit testing.
 
 # Setup Instructions:
-- Navigate to project directory.
+- Create a new PostgreSQL database with the name: `users`
+- Navigate to project directory
 - Install packages: `composer install`
 - Running unit tests: `./vendor/bin/phpunit`
 
@@ -24,7 +25,8 @@
     - Requires -u, -p -h command directive.
 
 # Assumptions:
-- The script assumes that the database server name is "users". To change this, navigate to `<project_dir>/services/validate_and_execute_command.php` and change line number 23.
+- The script assumes that the PostgreSQL database name used is `users`. To change this, navigate to `<project_dir>/services/validate_and_execute_command.php` and change line number 23.
+- The script assumes that the PostgreSQL database port used is `5432`. To change this, navigate to `<project_dir>/services/validate_and_execute_command.php` and change line number 22.
 - If "users" table already exists inside the database, --create_table directive will drop the existing table before creating a new "users" table.
 - If there is a --dry_run command directive, command directives -u, -p, and -h is not required.
 - If an email address already exists inside the table, then the script will update the name and the surname of the user.
