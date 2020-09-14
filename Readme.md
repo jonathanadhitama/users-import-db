@@ -24,7 +24,7 @@
     - Requires -u, -p -h command directive.
 
 # Assumptions:
-- The script assumes that the database server name is "users".
+- The script assumes that the database server name is "users". To change this, navigate to `<project_dir>/services/validate_and_execute_command.php` and change line number 23.
 - If "users" table already exists inside the database, --create_table directive will drop the existing table before creating a new "users" table.
 - If there is a --dry_run command directive, command directives -u, -p, and -h is not required.
 - If an email address already exists inside the table, then the script will update the name and the surname of the user.
@@ -36,4 +36,4 @@
 - All whitespace characters (spaces and tabs) will be removed from the name and surname of the user prior to processing inside database.
 - If a name or surname contains multiple words (i.e. surname van Gogh), each word in the name will be capitalised (i.e. Van Gogh).
 - Any surname that starts with an O' or Mc the next corresponding character will be capitalised (i.e. O'Reilly and McDonalds). 
-- Developed with PHP v7.4.10.
+- Developed with PHP v7.4.10 and PostgreSQL version 12.4.
