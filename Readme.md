@@ -8,7 +8,7 @@
 - Install packages: `composer install`
 - Running unit tests: `./vendor/bin/phpunit`
 
-#Running the script:
+# Running the script:
 - `php user_upload.php --help`
 - `php user_upload.php --create_table -u [username] -p [password] -h [host]`
 - `php user_upload.php --file [file] --dry_run`
