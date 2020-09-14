@@ -21,8 +21,9 @@
     - Requires -u, -p -h command directive.
 - --dry_run: Process all user data from the provided CSV file. But will execute any database operations.
     - Requires --file command directive.
+    - The -u, -p, and -h command directives are not required.
 - --file: Provides the CSV file path to be processed.
-    - Requires -u, -p -h command directive.
+    - If --dry_run directive is not specified, requires the -u, -p, -h command directives.
 
 # Assumptions:
 - The script assumes that the PostgreSQL database name used is `users`. To change this, navigate to `<project_dir>/services/validate_and_execute_command.php` and change line number 23.

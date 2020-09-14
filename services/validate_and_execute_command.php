@@ -53,12 +53,13 @@ function validate_and_execute($argv) {
             -u [username] – PostgreSQL username
             -p [password] – PostgreSQL password
             -h [host] – PostgreSQL host
-            --file [csv file name] – This is the name of the CSV to be processed    
+            --file [csv file name] – This is the name of the CSV to be processed.
+                                     If --dry_run directive is not specified, requires the -u, -p, -h command directives.    
             --create_table – This will cause the PostgreSQL users table to be built and no further action will be taken.
                              If the table already exists, it will drop the existing table first before creating a new table.
-                             To be used with the -u, -p, -h directives.
+                             Requires the -u, -p, -h command directives.
             --dry_run – This will be used with the --file directive in case we want to run the script but not insert into the DB. 
-                        The -u, -p, and -h directives are not required.
+                        The -u, -p, and -h command directives are not required.
             --help – which will output the above list of directives with details.
         ";
     } else {
