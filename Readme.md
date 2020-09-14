@@ -24,15 +24,15 @@
     - Requires -u, -p -h command directive.
 
 # Assumptions:
-- The script assumes that the database server name is "users"
+- The script assumes that the database server name is "users".
 - If "users" table already exists inside the database, --create_table directive will drop the existing table before creating a new "users" table.
 - If there is a --dry_run command directive, command directives -u, -p, and -h is not required.
 - If an email address already exists inside the table, then the script will update the name and the surname of the user.
 - First row of the CSV file is considered the header and will not be processed by the script.
 - If there is three or more column in the CSV file, the script will only consider the first three columns:
-    - The first column as the name of the user
-    - The second column as the surname of the user
-    - The third column as the email address of the user
+    - The first column as the name of the user.
+    - The second column as the surname of the user.
+    - The third column as the email address of the user.
 - All whitespace characters (spaces and tabs) will be removed from the name and surname of the user prior to processing inside database.
 - If a name or surname contains multiple words (i.e. surname van Gogh), each word in the name will be capitalised (i.e. Van Gogh).
 - Any surname that starts with an O' or Mc the next corresponding character will be capitalised (i.e. O'Reilly and McDonalds). 
